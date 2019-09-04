@@ -1,42 +1,66 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import styled from "styled-components"
+import Img from "gatsby-image"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const Wrapper = styled.header`
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+`
+
+const Navigation = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: 960px;
+  margin: auto;
+`
+
+const Logo = styled.div`
+  filter: invert(1);
+`
+
+const Menu = styled.nav`
+  margin: auto 0;
+`
+
+const Header = ({ menu, logo }) => {
+  return (
+    <Wrapper>
+      <Navigation>
+        <Logo>
+          <Link to="/">
+            <Img fixed={logo} />
+          </Link>
+        </Logo>
+        <Menu>
+          {menu.map((item, index) => (
+            <Link
+              key={index}
+              to={`/#${item.link}`}
+              style={{
+                color: `#ffffff`,
+                textDecoration: `none`,
+                textTransform: `capitalize`,
+                marginLeft: `1rem`,
+              }}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </Menu>
+      </Navigation>
+    </Wrapper>
+  )
+}
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  menu: PropTypes.array,
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  menu: [],
 }
 
 export default Header
