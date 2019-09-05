@@ -70,7 +70,7 @@ const Author = styled.i`
   font-size: 1rem;
 `
 
-const Vision = ({ background }) => {
+const Vision = ({ background, lang }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -84,33 +84,39 @@ const Vision = ({ background }) => {
       <Content>
         <Slider {...settings} style={{ zIndex: 3 }}>
           <div>
-            <Heading>Vision</Heading>
+            <Heading>{lang === "en" ? "Vision" : "Видение"}</Heading>
             <Text>
               <Quote>"</Quote>
-              There is no tool for development more effective than the
-              empowerment of women.
+              {lang === "en"
+                ? "There is no tool for development more effective than the empowerment of women."
+                : "Нет более эффективного инструмента развития, чем расширение прав и возможностей женщин."}
               <Author>
-                Kofi Annan, Secretary-General of The United Nations
+                {lang === "en"
+                  ? "Kofi Annan, Secretary-General of The United Nations"
+                  : "Кофи Аннан, Генеральный секретарь ООН"}
               </Author>
             </Text>
           </div>
           <div>
-            <Heading>Mission</Heading>
+            <Heading>{lang === "en" ? "Mission" : "Миссия"}</Heading>
             <Text>
               <Quote>"</Quote>
-              We strive to offer all our customers high quality services in the
-              education and development, use best business techniques to inspire
-              and to connect all Kazakhstan woman together.
+              {lang === "en"
+                ? "We strive to offer all our customers high quality services in the education and development, use best business techniques to inspire and to connect all Kazakhstan woman together."
+                : "Мы стремимся предлагать всем нашим клиентам высококачественные услуги в образование и развитие, использовать лучшие методы ведения бизнеса, чтобы вдохновить и соединить всю казахстанку вместе."}
             </Text>
           </div>
           <div>
-            <Heading>Philosophy</Heading>
+            <Heading>{lang === "en" ? "Philosophy" : "Философия"}</Heading>
             <Text>
               <Quote>"</Quote>
-              We all have a wonder woman inside us.
+              {lang === "en"
+                ? "We all have a wonder woman inside us."
+                : "У всех нас есть удивительная женщина внутри нас."}
               <Author>
-                Diane Von Furstenberg, President of the Council of Fashion
-                Designers of America
+                {lang === "en"
+                  ? "Diane Von Furstenberg, President of the Council of Fashion Designers of America"
+                  : "Диана фон Фюрстенберг, президент Совета модельеров Америки"}
               </Author>
             </Text>
           </div>

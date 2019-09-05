@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
@@ -32,28 +32,34 @@ const Layout = ({ children }) => {
       allMenu {
         nodes {
           name
+          name_alt
           link
         }
       }
       allAuthor {
         nodes {
           name
-          age
-          degree
+          name_alt
+          position
+          position_alt
         }
       }
       allEvent {
         nodes {
           name
+          name_alt
           date(formatString: "MMMM Do, YYYY")
           place
           about
+          about_alt
         }
       }
       contacts {
         workingTime
         workingDays
+        workingDays_alt
         town
+        town_alt
         phone
         email
       }
@@ -61,6 +67,7 @@ const Layout = ({ children }) => {
         siteMetadata {
           title
           description
+          description_alt
         }
       }
       logoImage: file(relativePath: { eq: "logo-inverted.png" }) {
@@ -161,15 +168,22 @@ const Layout = ({ children }) => {
     return event
   })
 
+  const [lang, setLang] = useState("en")
+  const handleLang = lang => {
+    setLang(lang)
+  }
   return (
     <>
       <Header
+        lang={lang}
         menu={data.allMenu.nodes}
         logo={data.logoImage.childImageSharp.fixed}
+        change={handleLang}
       />
       <Main>
-        <Banner meta={data.site.siteMetadata} />
+        <Banner meta={data.site.siteMetadata} lang={lang} />
         <About
+          lang={lang}
           img={data.statueImage.childImageSharp.fixed}
           photos={[
             data.AishaImage.childImageSharp.fixed,
@@ -178,18 +192,24 @@ const Layout = ({ children }) => {
           ]}
           names={data.allAuthor.nodes}
         />
-        <Vision background={data.mountainImage.childImageSharp.fixed} />
-        <Products />
+        <Vision
+          lang={lang}
+          background={data.mountainImage.childImageSharp.fixed}
+        />
+        <Products lang={lang} />
         <Events
+          lang={lang}
           events={events}
           image={data.TaofikImage.childImageSharp.fixed}
           bg={data.eventsImage.childImageSharp.fixed}
         />
         <GiftCard
+          lang={lang}
           image={data.giftImage.childImageSharp.fixed}
           bg={data.eventsImage.childImageSharp.fixed}
         />
         <Contacts
+          lang={lang}
           data={data.contacts}
           bg={data.MapImage.childImageSharp.fixed}
         />

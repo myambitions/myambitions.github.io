@@ -94,7 +94,7 @@ const SubmitButton = styled.button`
   }
 `
 
-const Products = () => {
+const Products = ({ lang }) => {
   const settings = {
     // dots: true,
     arrows: true,
@@ -111,55 +111,62 @@ const Products = () => {
   return (
     <Wrapper id="products">
       <ProductsDiv>
-        <Heading>Products</Heading>
+        <Heading>{lang === "en" ? "Products" : "Продукты"}</Heading>
         <Cards>
           <Card>
-            <HeadingSmall>Masterclass</HeadingSmall>
+            <HeadingSmall>
+              {lang === "en" ? "Masterclass" : "Мастеркласс"}
+            </HeadingSmall>
             <Slider {...settings}>
               <div>
                 <CardContent>
                   <Img src={gif3} alt="" />
                   <CardDescription>
-                    Online classes presents platform, which contains
-                    video-courses on various topics. Once a client get access,
-                    all masterclasses will be always available for a client.
+                    {lang === "en"
+                      ? "Online classes presents platform, which contains video-courses on various topics. Once a client get access, all masterclasses will be always available for a client."
+                      : "На онлайн-занятиях представлена платформа, которая содержит видео-курсы на различные темы. Как только клиент получит доступ, все мастер-классы всегда будут доступны для клиента."}
                   </CardDescription>
-                  <SubmitButton onClick={handleModal}>Get Info</SubmitButton>
+                  <SubmitButton onClick={handleModal}>
+                    {lang === "en" ? "Get Info" : "Узнать"}
+                  </SubmitButton>
                 </CardContent>
               </div>
             </Slider>
           </Card>
 
           <Card>
-            <HeadingSmall>Webinar</HeadingSmall>
+            <HeadingSmall>{lang === "en" ? "Webinar" : "Вебинар"}</HeadingSmall>
             <Slider {...settings}>
               <div>
                 <CardContent>
                   <Img src={gif1} alt="" />
                   <CardDescription>
-                    Streaming live video with opportunity to interact between
-                    all the participants. Participants can comment, ask
-                    questions and give feedback immediately online. All webinars
-                    will be available 72 hours.
+                    {lang === "en"
+                      ? "Streaming live video with opportunity to interact between all the participants. Participants can comment, ask questions and give feedback immediately online. All webinars will be available 72 hours."
+                      : "Потоковое видео в реальном времени с возможностью взаимодействия между все участники. Участники могут комментировать, спрашивать вопросы и дать отзыв сразу в Интернете. Все вебинары будет доступно 72 часа."}
                   </CardDescription>
-                  <SubmitButton onClick={handleModal}>Get Info</SubmitButton>
+                  <SubmitButton onClick={handleModal}>
+                    {lang === "en" ? "Get Info" : "Узнать"}
+                  </SubmitButton>
                 </CardContent>
               </div>
             </Slider>
           </Card>
 
           <Card>
-            <HeadingSmall>Articles</HeadingSmall>
+            <HeadingSmall>{lang === "en" ? "Articles" : "Статьи"}</HeadingSmall>
             <Slider {...settings}>
               <div>
                 <CardContent>
                   <Img src={gif4} alt="" />
                   <CardDescription>
-                    Wonder Woman blog will touch actual information about
-                    lifestyle and professional environment. Everybody can read
-                    and subscribe to every topic they want.
+                    {lang === "en"
+                      ? "Wonder Woman blog will touch actual information about lifestyle and professional environment. Everybody can read and subscribe to every topic they want."
+                      : "Блог Wonder Woman коснется актуальной информации о образ жизни и профессиональная среда. Каждый может читать и подписаться на каждую тему, которую они хотят."}
                   </CardDescription>
-                  <SubmitButton>Go to blog</SubmitButton>
+                  <SubmitButton>
+                    {lang === "en" ? "Go to blog" : "Перейти в блог"}
+                  </SubmitButton>
                 </CardContent>
               </div>
               {/* <VideoDiv>

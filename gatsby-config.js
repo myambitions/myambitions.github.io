@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Wonder Woman`,
     description: `Be strong, be smart, be strategic!`,
+    description_alt: `Будь сильным, будь умным, будь стратегом!`,
     author: `@ambition`,
   },
   plugins: [

@@ -24,8 +24,16 @@ const Logo = styled.div`
 const Menu = styled.nav`
   margin: auto 0;
 `
+const LanguageSpan = styled.span`
+  margin-left: 0.5rem;
+  cursor: pointer;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+`
 
-const Header = ({ menu, logo }) => {
+const Header = ({ menu, logo, lang, change }) => {
   return (
     <Wrapper>
       <Navigation>
@@ -46,9 +54,16 @@ const Header = ({ menu, logo }) => {
                 marginLeft: `1rem`,
               }}
             >
-              {item.name}
+              {lang === "en" ? item.name : item.name_alt}
             </Link>
           ))}
+          <LanguageSpan
+            style={{ marginLeft: "1.5rem" }}
+            onClick={() => change("en")}
+          >
+            en
+          </LanguageSpan>
+          <LanguageSpan onClick={() => change("ru")}>ru</LanguageSpan>
         </Menu>
       </Navigation>
     </Wrapper>

@@ -30,12 +30,14 @@ const GiftDescription = styled.p`
   text-shadow: 0 0 16px #ea8887;
 `
 
-const GiftCard = ({ image, bg }) => {
+const GiftCard = ({ image, bg, lang }) => {
   return (
     <Wrapper background={bg.src}>
       <Content>
         <GiftDescription>
-          We offer you a gift card for every product or event from Wonder Woman.
+          {lang === "en"
+            ? "We offer you a gift card for every product or event from Wonder Woman."
+            : "Мы предлагаем вам подарочную карту на каждый продукт или событие от Wonder Woman."}
         </GiftDescription>
         <Img
           fixed={image}
@@ -46,7 +48,9 @@ const GiftCard = ({ image, bg }) => {
           }}
         />
         <GiftDescription style={{ marginTop: "auto" }}>
-          Make happy the person you want!
+          {lang === "en"
+            ? "Make happy the person you want!"
+            : "Порадуйте человека, которого хотите!"}
         </GiftDescription>
       </Content>
     </Wrapper>

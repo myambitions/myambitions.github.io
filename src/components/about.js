@@ -31,7 +31,9 @@ const Text = styled.p`
   line-height: 1.75rem;
   letter-spacing: 1px;
   align-items: center;
-  text-indent: 1rem;
+  text-indent: 2rem;
+  text-align: justify;
+  margin-bottom: 0;
 `
 const Heading = styled.h2`
   font-family: Abril Fatface;
@@ -92,14 +94,15 @@ const TeamText = styled.p`
   font-weight: 500;
   letter-spacing: 1px;
   align-items: center;
-  text-indent: 1rem;
+  text-indent: 2rem;
   width: 86%;
   padding: 0 1rem;
   line-height: 1.25rem;
   margin: 0;
+  text-align: justify;
 `
 
-const AboutPage = ({ img, photos, names }) => {
+const AboutPage = ({ img, photos, names, lang }) => {
   const settings = {
     dots: true,
     arrows: false,
@@ -117,9 +120,9 @@ const AboutPage = ({ img, photos, names }) => {
       <SliderDiv key={index}>
         <Img fixed={profile.image} style={{ height: "400px" }}></Img>
         <SliderText>
-          {profile.name}
+          {lang === "en" ? profile.name : profile.name_alt}
           <br />
-          {profile.position}
+          {lang === "en" ? profile.position : profile.position_alt}
         </SliderText>
         <SliderOverlay />
       </SliderDiv>
@@ -129,7 +132,7 @@ const AboutPage = ({ img, photos, names }) => {
   return (
     <Wrapper>
       <About id="about">
-        <Heading>Who we are</Heading>
+        <Heading>{lang === "en" ? "Who we are" : "О нас"}</Heading>
         <Block>
           <Img
             fixed={img}
@@ -142,47 +145,48 @@ const AboutPage = ({ img, photos, names }) => {
             }}
           ></Img>
           <Content>
-            <HeadingInner>The Project</HeadingInner>
+            <HeadingInner>
+              {lang === "en" ? "The Project" : "ПРОЕКТ"}
+            </HeadingInner>
             <HR />
             <Text>
-              Wonder Woman covers the most relevant and interesting programs
-              created for developing the intelligent and professional level for
-              women in Kazakhstan, and also attracts the attention of their
-              contributions to various areas of activity. Wonder Woman is the
-              project for Kazakhstan women different ages from all regions and
-              different spheres of professional development. Here every woman
-              can find any tools for growth and networking.The project is based
-              in Almaty, Kazakhstan. It is an ambitious idea to help each other
-              in the World of Women Development through new technologies and
-              digital environment. The Wonder Woman will illustrate the
-              collaboration of digital commerce, project management tools and
-              highly important theme, that can help women to develop themselves.
+              {lang === "en"
+                ? "Wonder Woman covers the most relevant and interesting programs created for developing the intelligent and professional level for women in Kazakhstan, and also attracts the attention of their contributions to various areas of activity."
+                : "Wonder Woman освещает наиболее актуальные и интересные программы, созданные для интеллектуального и профессионального  развития среди женщин в Казахстане."}
+            </Text>
+            <Text>
+              {lang === "en"
+                ? "Wonder Woman is the project for Kazakhstan women different ages from all regions and different spheres of professional development. Here every woman can find any tools for growth and networking.The project is based in Almaty, Kazakhstan. It is an ambitious idea to help each other in the World of Women Development through new technologies and digital environment."
+                : "Wonder Woman - это проект для казахстанских женщин разного возраста и всех сфер профессионального развития. Мы предоставляет возможность каждой  женщине раскрыть свои лучшие качества и усовершенствовать навыки в различных сферах бизнеса, образования, психологии, искусства, науки."}
+            </Text>
+            <Text>
+              {lang === "en"
+                ? "The Wonder Woman will illustrate the collaboration of digital commerce, project management tools and highly important theme, that can help women to develop themselves."
+                : "Идея проекта была создана во Франции, штаб квартира команды базируется в Алматы, Казахстан."}
             </Text>
           </Content>
         </Block>
         <Profiles>
           <span></span>
           <ProfileBorder>
-            <HeadingInner style={{ paddingTop: "1rem" }}>Our team</HeadingInner>
+            <HeadingInner style={{ paddingTop: "1rem" }}>
+              {lang === "en" ? "Our team" : "НАША КОМАНДА"}
+            </HeadingInner>
             <HR />
             <TeamText>
-              The project was found in Lille, Paris and developed by Global
-              E-commerce program Master students of Lille university, France in
-              2018.
+              {lang === "en"
+                ? "The project was found in Lille, Paris and developed by Global E-commerce program Master students of Lille university, France in 2018."
+                : "Наш проект был  разработан магистрантами Программы Глобальной Электронной Коммерции государственного Университета Лилль, во Франции в 2018 году."}
             </TeamText>
             <TeamText>
-              The intention to create such a great platform for women support
-              came to 2 girls from Kazakhstan, who want to use all knowledge to
-              build the network of strong, smart and strategic women.
+              {lang === "en"
+                ? "The intention to create such a great platform for women support came to 2 girls from Kazakhstan, who want to use all knowledge to build the network of strong, smart and strategic women. The realization was with help of Taoufik, who was the market analytic through the whole process of developing."
+                : "Идея создания сообщества сильных, умных и стратегически развитых женщин, пришла к двум выпускницам из Казахстана. Реализация была осуществлена с помощью выпускника Таофика, который был аналитиком рынка на протяжении всего процесса разработки."}
             </TeamText>
             <TeamText>
-              The realization was with help of Taofik, who was the market
-              analytic through the whole process of developing.
-            </TeamText>
-            <TeamText>
-              The project Wonder Woman will be a start of new opportunities for
-              everyone, who wants to develop skills and share knowledge with
-              others.
+              {lang === "en"
+                ? "The project Wonder Woman will be a start of new opportunities for everyone, who wants to develop skills and share knowledge with others."
+                : "Проект Wonder Woman станет началом новых возможностей для всех, кто хочет развивать навыки и делиться знаниями с другими."}
             </TeamText>
           </ProfileBorder>
           <Slider

@@ -62,13 +62,15 @@ const Description = styled.p`
   }
 `
 
-const Video = ({ videoSrc, meta, ...props }) => (
+const Video = ({ videoSrc, meta, lang, ...props }) => (
   <VideoDiv>
     <VideoEl src={videoSrc} autoPlay loop></VideoEl>
     <Overlay />
     <Title>
       <Heading>{meta.title}</Heading>
-      <Description>{meta.description}</Description>
+      <Description>
+        {lang === "en" ? meta.description : meta.description_alt}
+      </Description>
     </Title>
   </VideoDiv>
 )

@@ -1,6 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 
+import facebookIcon from "../images/social/facebook.svg"
+import twitterIcon from "../images/social/twitter.svg"
+import youtubeIcon from "../images/social/youtube.svg"
+import instagramIcon from "../images/social/instagram.svg"
+
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
@@ -110,17 +115,30 @@ const SubmitButton = styled.button`
     box-shadow: 0 0 18px 0 #fff;
   }
 `
+const SocialIcons = styled.div`
+  width: fit-content;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  margin-bottom: 1rem;
+`
+const Icon = styled.img`
+  width: 28px;
+  heigth: 28px;
+  filter: invert(1);
+  cursor: pointer;
+`
 
-const Contacts = ({ data, bg, icons }) => {
+const Contacts = ({ data, bg, lang }) => {
   const sendEmail = event => {}
   return (
     <Wrapper id="contacts" background={bg.src}>
       <Content>
         <SocialDiv>
           <FormHeading>
-            We'd love to
+            {lang === "en" ? "We'd love to" : "Мы с радостью"}
             <br />
-            hear from you.
+            {lang === "en" ? "hear from you." : "выслушаем вас"}
           </FormHeading>
           <Form
             method="post"
@@ -130,25 +148,28 @@ const Contacts = ({ data, bg, icons }) => {
             <Textarea
               type="text"
               name="body"
-              placeholder="Your message"
+              placeholder={lang === "en" ? "Your message" : "Ваше сообщение"}
               rows="4"
             />
             <Input type="text" name="_gotcha" style={{ display: "none" }} />
             <SubmitButton type="submit" onClick={sendEmail}>
-              Send
+              {lang === "en" ? "Send" : "Отправить"}
             </SubmitButton>
           </Form>
         </SocialDiv>
         <Information>
-          <Item>
-            <ItemLink href={`tel:${data.phone}`}>{data.phone}</ItemLink>
-          </Item>
+          <SocialIcons>
+            <Icon src={facebookIcon} />
+            <Icon src={instagramIcon} />
+            <Icon src={twitterIcon} />
+            <Icon src={youtubeIcon} />
+          </SocialIcons>
           <Item>{data.workingTime}</Item>
-          <Item>{data.workingDays}</Item>
+          <Item>{lang === "en" ? data.workingDays : data.workingDays_alt}</Item>
           <Item>
             <ItemLink href={`mailto:${data.email}`}>{data.email}</ItemLink>
           </Item>
-          <Item>{data.town}</Item>
+          <Item>{lang === "en" ? data.town : data.town_alt}</Item>
         </Information>
       </Content>
       <Overlay />

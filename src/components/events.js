@@ -69,6 +69,27 @@ const Icon = styled.img`
   margin: 0;
   filter: invert(1);
 `
+const Button = styled.button`
+  width: fit-content;
+  padding: 0.325rem 2rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #ea8887;
+  cursor: pointer;
+  box-shadow: 0 0 18px 0 #ea8887;
+  font-weight: 600;
+  transition: 0.5s ease;
+  z-index: 2;
+  margin: 6rem auto 0;
+  display: flex;
+
+  &:hover {
+    background-color: #fff;
+    color: #ea8887;
+    box-shadow: 0 0 18px 0 #fff;
+  }
+`
 
 class Events extends React.Component {
   constructor(props) {
@@ -86,10 +107,10 @@ class Events extends React.Component {
   }
 
   render() {
-    const { events, bg } = this.props
+    const { events, bg, lang } = this.props
     return (
       <Wrapper id="events" background={bg.src}>
-        <Heading>Events</Heading>
+        <Heading>{lang === "en" ? "Events" : "События"}</Heading>
         <EventsDiv>
           <EventsNames>
             {events.map((event, index) => (
@@ -98,9 +119,10 @@ class Events extends React.Component {
                 onClick={() => this.handleEvent(event.name)}
                 className={this.state.event === event.name && "active"}
               >
-                {event.name}
+                {lang === "en" ? event.name : event.name_alt}
               </EventName>
             ))}
+            <Button>{lang === "en" ? "Get Info" : "Узнать"}</Button>
           </EventsNames>
           {events.map((event, index) => {
             return (
@@ -109,14 +131,24 @@ class Events extends React.Component {
                   <div>
                     <InfoDiv>
                       <Icon src={CalendarIcon} alt="" />
-                      <InfoP>{event.date}</InfoP>
+                      <InfoP>
+                        {lang === "en"
+                          ? "Event date will be anounced soon"
+                          : "Дата события будет объявлена в скором времени"}
+                      </InfoP>
                     </InfoDiv>
                     <InfoDiv>
                       <Icon src={LocationIcon} alt="" />
-                      <InfoP>Somewhere in {event.place}</InfoP>
+                      <InfoP>
+                        {lang === "en"
+                          ? "Location will be anounced soon"
+                          : "Локация будет объявлена в скором времени"}
+                      </InfoP>
                     </InfoDiv>
                     <InfoDiv>
-                      <InfoP>{event.about}</InfoP>
+                      <InfoP>
+                        {lang === "en" ? event.about : event.about_alt}
+                      </InfoP>
                     </InfoDiv>
                   </div>
                   <Img
